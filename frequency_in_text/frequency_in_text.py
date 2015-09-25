@@ -1,8 +1,8 @@
 import urllib.request
 from collections import defaultdict
 
-
-book_file = urllib.request.urlopen("https://www.gutenberg.org/files/521/521-0.txt").read().decode("utf-8")
+link = "https://www.gutenberg.org/files/521/521-0.txt"
+book_file = urllib.request.urlopen(link).read().decode("utf-8")
 
 
 def histogram(source_text):
