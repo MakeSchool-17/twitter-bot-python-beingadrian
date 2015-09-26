@@ -1,8 +1,8 @@
-import urllib.request
+import re
 from collections import defaultdict
 
-link = "https://www.gutenberg.org/files/521/521-0.txt"
-book_file = urllib.request.urlopen(link).read().decode("utf-8")
+book_path = "robinson_crusoe_text.txt"
+book_file = open(book_path).read()
 
 
 def histogram(source_text):
@@ -23,9 +23,20 @@ def frequency(word, histogram):
     return histogram[word]
 
 
+def write_to_file(histogram):
+    # write_to_file
+    text_file = open("histogram.txt", 'w+')
+    # text_file.write(str(histogram))
+    for key in histogram:
+        word = key.lower().capitalize()
+        re.sub(r"[^\w\P]", "", word)
+        text_file.write("{} {} \n".format(word, histogram[key]))
+
+
 if __name__ == "__main__":
     hist = histogram(book_file)
-    total_word_count = unique_words(hist)
-    frequency("gave", hist)
-    gave_word_frequency = frequency("to", hist)
-    print(gave_word_frequency)
+    # total_word_count = unique_words(hist)
+    # frequency("gave", hist)
+    # gave_word_frequency = frequency("to", hist)
+    # print(gave_word_frequency)
+    write_to_file(hist)
