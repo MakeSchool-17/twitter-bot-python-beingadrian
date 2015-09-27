@@ -1,0 +1,12 @@
+San Francisco 1
+San Jose 4
+San Bernardino 4
+Chicago 2
+Jakarta 9
+London 8
+Boston 3
+Seoul 2
+New York 10
+Berlin 9
+Moscow 11
+Sidney 7
