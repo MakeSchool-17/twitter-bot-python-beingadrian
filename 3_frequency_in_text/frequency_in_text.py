@@ -28,7 +28,7 @@ def write_to_file(histogram):
     text_file = open("histogram.txt", 'w+')
     # text_file.write(str(histogram))
     for key in histogram:
-        word = key.lower().capitalize()
+        word = key.lower()
         processed = re.sub(r'[\W]+', "", word)
         text_file.write("{} {} \n".format(processed, histogram[key]))
 

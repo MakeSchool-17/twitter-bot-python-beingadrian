@@ -31,6 +31,7 @@ def random_word(hist_dictionary):
     return word
 
 
+# inefficient way
 def random_weighted_word(hist_dictionary):
     vir_list = []
     for key, value in hist_dictionary.items():
@@ -40,12 +41,26 @@ def random_weighted_word(hist_dictionary):
     return word
 
 
+# more efficient way
+def choose_random_word(hist_dictionary):
+    # total number of words
+    random_int = random.uniform(0, 1)
+    total_word_count = sum(hist_dictionary.values())
+    cumulative_prob = 0.0
+    for key, val in hist_dictionary.items():
+        cumulative_prob += (val / total_word_count)
+        if random_int < cumulative_prob:
+            break
+    return key
+
+
+# frequency counter to check distribution
 def count_frequency(total_trials, ori_dictionary):
     counter_dict = {}
     for key in ori_dictionary.keys():
         counter_dict[key] = 0
     for i in range(0, total_trials):
-        word = random_weighted_word(ori_dictionary)
+        word = choose_random_word(ori_dictionary)
         counter_dict[word] += 1
     return counter_dict
 
@@ -57,7 +72,9 @@ if __name__ == "__main__":
         # print(random_word)
         # weighted_word = random_weighted_word(hist_dictionary)
         # print(weighted_word)
-        result = count_frequency(10000, hist_dictionary)
-        print(result)
+        # result = count_frequency(10000, hist_dictionary)
+        # print(result)
+        word = choose_random_word(hist_dictionary)
+        print(word)
     except:
         print("No such file or directory.")
