@@ -16,7 +16,9 @@ def histogram(list_of_words):
             tuple_val = (word, 0)
             linked_list.insert(tuple_val)
         else:
-            searched_word[1] += 1
+            pass
+            # searched_word[1] += 1
 
+s
 if __name__ == "__main__":
     histogram(words_list)
