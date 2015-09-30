@@ -2,22 +2,10 @@ import sys
 sys.path.append('../')
 
 import converter
+import timer
 
 words_list = converter.convert_to_words_list("../robinson_crusoe_text.txt")
 
-
-# def histogram2(list_of_words):
-#     tuple_list = []
-#     for word in list_of_words:
-#         tuple_list.append((word, 0))
-#     for word in tuple_list:
-#         for item in tuple_list:
-#             if item[0] == word:
-#                 new_count = item[1] + 1
-#                 tuple_list.append((word, new_count))
-#                 tuple_list.pop(item.index())
-#     print(tuple_list)
-#
 
 def find(item, histogram):
     for index, pair in enumerate(histogram):
@@ -26,6 +14,7 @@ def find(item, histogram):
     return None
 
 
+# Algorithm complexity: O(n^2)
 def histogram(words):
     hist = []
     for word in words:
@@ -39,5 +28,13 @@ def histogram(words):
     return hist
 
 
+def frequency(word, histogram):
+    index = find(word, histogram)
+    word = histogram[index][0]
+    return word
+
+
 if __name__ == "__main__":
-    print(histogram(words_list))
+    hist = histogram(words_list)
+    # timer.time_function("frequency('the', hist)")  # 0.000 secs
+    timer.time_function("histogram(words_list)")  # 9.175 secs

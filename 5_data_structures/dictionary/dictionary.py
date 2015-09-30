@@ -2,10 +2,12 @@ import sys
 sys.path.append('../')
 
 import converter
+import timer
 
 words_list = converter.convert_to_words_list("../robinson_crusoe_text.txt")
 
 
+# algorithm complexity: 1 (some constant)
 def histogram(words_list):
     histogram = {}
     for word in words_list:
@@ -24,7 +26,6 @@ def frequency(word, histogram):
 
 
 if __name__ == "__main__":
-    histogram = histogram(words_list)
-    # print(histogram)
-    to_frequency = frequency("to", histogram)
-    print(to_frequency)
+    # histogram = histogram(words_list)
+    # timer.time_function("frequency('the', histogram)")  # 0.000 secs
+    timer.time_function("histogram(words_list)")  # 0.027 secs
