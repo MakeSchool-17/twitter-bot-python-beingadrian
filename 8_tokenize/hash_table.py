@@ -93,10 +93,11 @@ class HashTable(object):
     def set_value(self, key, val):
         # find hash of key
         bucket_index = hash(key) % 8
-        if buckets_array[bucket_index].search(key) is not None:
+        if self.buckets_array[bucket_index].search_by_key(key) is not None:
             # if key exists, replace key
-            self.buckets_array[bucket_index].delete_by_key(key)
-            self.buckets_array[bucket_index].insert((key, val))
+            bucket = self.buckets_array[bucket_index]
+            bucket.delete_by_key(key)
+            bucket.insert((key, val))
         else:
             # if key doesn't exist, create key
             self.buckets_array[bucket_index].insert((key, val))
@@ -132,6 +133,4 @@ if __name__ == "__main__":
     hash_table.set_value("test", 0)
     hash_table.set_value("love", 1)
     search = hash_table.search("test")
-    print(search)
-    hash_table.delete_by_key("love")
-    print(keys)
+    hash_table.set_value("love", 5)
