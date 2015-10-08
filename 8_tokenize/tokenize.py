@@ -1,5 +1,6 @@
 import sys
 from hash_table import HashTable
+from binary_heap_max import Binary_Heap_Max
 
 
 def tokenize(text_file_dir):
@@ -20,8 +21,24 @@ def count_tokens(tokenized_array):
             histogram.set_value(word, 1)
     return histogram
 
+
+def convert_to_heap(histogram):
+    heap = Binary_Heap_Max()
+    items_list = []
+    for item in histogram.items():
+        items_list.append((item[1], item[0]))
+    heap.build_heap(items_list)
+    return heap
+
+
 if __name__ == "__main__":
     user_input = sys.argv[1]
     tokenized_array = tokenize(user_input)
     histogram = count_tokens(tokenized_array)
-    print(histogram.items())
+    heap = convert_to_heap(histogram)
+    print(heap.delete_max())
+    print(heap.delete_max())
+    print(heap.delete_max())
+    print(heap.delete_max())
+    print(heap.delete_max())
+    print(heap.delete_max())
