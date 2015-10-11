@@ -20,7 +20,11 @@ def count_tokens(tokenized_array):
         else:
             histogram.set_value(word, 1)
     return histogram
-    
+
+
+def count_tokens_second(tokenized_array):
+    histogram = HashTable()
+
 
 def convert_to_heap(histogram):
     heap = Binary_Heap_Max()

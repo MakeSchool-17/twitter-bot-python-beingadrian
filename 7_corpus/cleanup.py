@@ -1,6 +1,7 @@
 import re
 import sys
 
+
 def clean_text(file_dir):
     read_file = open(file_dir, 'r').read()
     # remove sentences not said by Elon
