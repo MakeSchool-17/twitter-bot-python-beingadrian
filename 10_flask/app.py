@@ -10,7 +10,7 @@ def display_text():
     tokenized = tokenize.tokenize("cleaned_corpus.txt")
     markov = Markov_Chain()
     markov.build_chain(tokenized)
-    text = markov.random_walk(50)
+    text = markov.random_walk(100)
     return text
 
 if __name__ == '__main__':
